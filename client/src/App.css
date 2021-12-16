@@ -28,3 +28,14 @@
   color: aqua;
   border-bottom: 2px solid aqua;
 }
+
+.form-row {
+  margin-bottom: 1em;
+}
+.form-invalid-row {
+  border: 1px solid #f5c2c7;
+  background: #f8d7da;
+}
+.form-invalid-label {
+  color: #842029;
+}
