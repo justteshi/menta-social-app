@@ -2,36 +2,37 @@ import React, { useState } from 'react'
 import { Form, Button, Container, Spinner, Alert } from 'react-bootstrap'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
+import { useForm } from '../utils/hooks'
 
 const Register = () => {
     const [errors, setErrors] = useState({})
-    const [values, setValues] = useState({
+
+
+    const { onChange, onSubmit, values } = useForm(registerUser, {
         username: '',
         email: '',
         password: '',
         confirmPassword: ''
     })
 
-    const onChange = (event) => {
-        setValues({...values, [event.target.name]: event.target.value})
-    }
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(proxy, result){
+        update(_, result){
             console.log(result)
+            window.location.href = '/'
         },
         onError(err){
-            console.log(err.graphQLErrors[0].extensions.errors)
-            setErrors(err.graphQLErrors[0].extensions.errors)
+            // console.log(err.graphQLErrors[0].extensions.errors)
+            setErrors(err.graphQLErrors[0]? err.graphQLErrors[0].extensions.errors: {})
             
         },
         variables: values
     })
 
-    const onSubmit = (event) => {
-        event.preventDefault()
+    function registerUser(){
         addUser()
     }
+
     
     return (
         <Container>
@@ -46,7 +47,7 @@ const Register = () => {
                         <h1 style={{textAlign:"center"}}>Register</h1>
                         {Object.keys(errors).length > 0 && (
                             <Alert variant='danger'>
-                                <ul className='list'>
+                                <ul className='error-list'>
                                 {Object.values(errors).map((value) => (
                                     <li key={value}>{value}</li>
                                 ))}
@@ -114,12 +115,11 @@ const Register = () => {
                         </Form.Group>
 
                         <Button variant="primary" type="submit">
-                            Submit
+                            Register
                         </Button>
                     </Form>
                 </>
             )}
-            
         </Container>
     )
 }

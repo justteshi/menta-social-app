@@ -70,7 +70,6 @@ module.exports = {
                 confirmPassword
             )
             if(!valid) {
-                console.log(errors)
                 throw new UserInputError('Error', { errors })
             }
             //User already exist
