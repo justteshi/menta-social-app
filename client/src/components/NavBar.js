@@ -1,14 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Container, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+import { AuthContext } from '../context/auth'
+
 const NavBar = () => {
+    const { user, logout } = useContext(AuthContext)
     const pathname = window.location.pathname
     const path = pathname === '/' ? 'home' : pathname.substring(1)
     const [activeItem, setActiveItem] = useState(path)
 
     const handleItemClicked = (name) => setActiveItem(name)
 
-    return (
+    const navBar = user ? (
+        <div className='nav-bar-warapper'>
+            <Container fluid="sm" className="nav-bar">
+                <ul>
+                    <li><NavLink to="/" active={`${true}`} >{user.username}</NavLink></li>
+                </ul>
+                <ul>
+
+                    <li><NavLink to='' onClick={logout}>Logout</NavLink></li>
+                </ul>
+
+            </Container>
+        </div>
+    ) : (
         <div className='nav-bar-warapper'>
             <Container fluid="sm" className="nav-bar">
                 <ul>
@@ -23,6 +39,8 @@ const NavBar = () => {
             </Container>
         </div>
     )
+
+    return navBar
 }
 
 export default NavBar

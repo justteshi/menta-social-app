@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Form, Button, Container, Spinner, Alert } from 'react-bootstrap'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { useForm } from '../utils/hooks'
+import { AuthContext } from '../context/auth'
 
 const Register = () => {
+    const context = useContext(AuthContext)
     const [errors, setErrors] = useState({})
-
 
     const { onChange, onSubmit, values } = useForm(registerUser, {
         username: '',
@@ -17,8 +18,9 @@ const Register = () => {
 
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
-        update(_, result){
-            console.log(result)
+        update(_, { data: {register: userData} }){
+            // console.log(result)
+            context.login(userData)
             window.location.href = '/'
         },
         onError(err){

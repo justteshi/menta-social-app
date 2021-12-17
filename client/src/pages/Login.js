@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Form, Button, Container, Spinner, Alert } from 'react-bootstrap'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { useForm } from '../utils/hooks'
+import { AuthContext } from '../context/auth'
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
+    let navigate = useNavigate() 
+    const context = useContext(AuthContext)
     const [errors, setErrors] = useState({})
 
      const { onChange, onSubmit, values } = useForm(loginUserCallback, {
@@ -13,9 +17,11 @@ const Login = () => {
      })
 
     const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-        update(_, result){
-            console.log(result)
-            window.location.href = '/'
+        update(_, { data: { login: userData } }){
+
+            context.login(userData)
+            // window.location.href = '/'
+            navigate('/')
         },
         onError(err){
             // console.log(err.graphQLErrors[0].extensions.errors)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import moment from 'moment'
 import { AiFillLike, AiOutlineComment } from 'react-icons/ai'
 
