@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from '../utils/hooks'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
@@ -30,19 +30,30 @@ const PostForm = () => {
     return (
         <div style={{marginTop:'2em', marginBottom: '2em', borderRadius:'25px', border:'1px solid aqua', background:'lightblue'}}>
             <h2 style={{textAlign:'center'}}>Create a post:</h2>
+            {/* {Object.keys(error).length > 0 && (
+                            <Alert variant='danger'>
+                                <ul className='list'>
+                                {Object.values(error).map((value) => (
+                                    <li key={value}>{value}</li>
+                                ))}
+                                </ul>
+                            </Alert>
+                        )} */}
+            { error && (
+                <Alert variant='danger'>
+                    <ul className='error-list'>
+                        <li>{error.graphQLErrors[0].message}</li>
+                    </ul>
+                </Alert>
+            ) }
             <Form onSubmit={onSubmit} noValidate style={{display:'flex',justifyContent:'center'}}>
                 <Form.Group  controlId="formBasicCreatePost" className='form-row'>
-                {/* className={errors.username ? 'form-invalid-label': ''} */}
-                    {/* <Form.Label >
-                        Username
-                    </Form.Label> */}
                     <Form.Control 
                         type="text" 
                         placeholder="Write your text here..."
                         name='body'
                         onChange={onChange}
                         value={values.body}
-                        // className={errors.username ? 'form-invalid-row': ''}
                     />
                 </Form.Group>
                 <Button type="submit" variant='warning' style={{height:'38px'}}>Post</Button>

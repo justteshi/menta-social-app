@@ -42,3 +42,13 @@
 .form-invalid-label {
   color: #842029;
 }
+
+.post-card-col {
+  animation: fadeIn liner 2s;
+  -moz-animation: fadeIn linear 1s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}

@@ -48,7 +48,7 @@ const Login = (props) => {
                         <h1 style={{textAlign:"center"}}>Login</h1>
                         {Object.keys(errors).length > 0 && (
                             <Alert variant='danger'>
-                                <ul className='list'>
+                                <ul className='error-list'>
                                 {Object.values(errors).map((value) => (
                                     <li key={value}>{value}</li>
                                 ))}

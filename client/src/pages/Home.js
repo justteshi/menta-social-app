@@ -35,8 +35,8 @@ const Home = () => {
                     <h3 style={{textAlign:"center"}}>Loading posts...</h3>
                 ) : (
                     posts && posts.map(post => (
-                        <Col key={post.id} style={{flex:"25%", maxWidth:"25%", marginBottom:"10px"}}>
-                            <PostCard post={post}  style={{}} />
+                        <Col key={post.id} style={{flex:"25%", maxWidth:"25%", marginBottom:"10px"}} className="post-card-col">
+                            <PostCard post={post} />
                         </Col>
                     ))
                 )}

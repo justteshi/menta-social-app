@@ -19,12 +19,10 @@ const Register = () => {
 
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
         update(_, { data: {register: userData} }){
-            // console.log(result)
             context.login(userData)
             window.location.href = '/'
         },
         onError(err){
-            // console.log(err.graphQLErrors[0].extensions.errors)
             setErrors(err.graphQLErrors[0]? err.graphQLErrors[0].extensions.errors: {})
             
         },
