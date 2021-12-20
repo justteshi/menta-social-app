@@ -63,19 +63,19 @@ const PostForm = () => {
 }
 
 const CREATE_POST_MUTATION = gql`
-mutation createPost($body: String!){
-    createPost(body: $body){
-        id body createdAt username
-        likes {
-            id username createdAt
+    mutation createPost($body: String!){
+        createPost(body: $body){
+            id body createdAt username
+            likes {
+                id username createdAt
+            }
+            likeCount
+            comments {
+                id body username createdAt
+            }
+            commentCount
         }
-        likeCount
-        comments {
-            id body username createdAt
-        }
-        commentCount
     }
-}
 `
 
 export default PostForm

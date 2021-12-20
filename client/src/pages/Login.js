@@ -43,8 +43,8 @@ const Login = (props) => {
                 </div>
             ) : (
                 <>
-
-                    <Form style={{width:"50%", margin:"auto",marginTop:"4em"}} noValidate onSubmit={onSubmit} >
+                    <p style={{textAlign:"center", marginTop:"4em", fontStyle:"italic"}}>If you want to like or comment posts, please Login or <a href='/register'>Sing up</a> first.</p>
+                    <Form style={{width:"50%", margin:"auto",marginTop:"1em"}} noValidate onSubmit={onSubmit} >
                         <h1 style={{textAlign:"center"}}>Login</h1>
                         {Object.keys(errors).length > 0 && (
                             <Alert variant='danger'>

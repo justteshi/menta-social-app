@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import { AuthContext } from '../context/auth'
 import moment from 'moment'
-import { AiFillLike, AiOutlineComment } from 'react-icons/ai'
+import { AiOutlineComment } from 'react-icons/ai'
 import { FiTrash2 } from 'react-icons/fi'
+import LikeButton from './LikeButton'
 
 const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCount, likes }}) => {
     
     const { user } = useContext(AuthContext)
-    const likePost = () =>{
-        console.log('like post')
-    }
 
     return (
         <Card >
@@ -22,20 +20,17 @@ const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCou
                 <Card.Text>{body}</Card.Text>
             </Card.Body>
             <Card.Footer style={{display:"flex", justifyContent:"space-between"}}>
-                <div onClick={likePost}>
-                    <AiFillLike style={{fontSize:"18px"}}/>
-                    {likeCount}
-                </div>
+                <LikeButton post={{id, likes,likeCount}} user={user}></LikeButton>
                 <div>
                     <a href={`/posts/${id}`}>
-                    <AiOutlineComment style={{fontSize:"20px"}} />
+                    <AiOutlineComment style={{fontSize:"20px", position:"relative", top:"-3px"}} />
                     </a>
                     {commentCount}
 
                 </div>
                 {user && user.username === username && (
-                    <div onClick={() => console.log('delete post')}>
-                        <FiTrash2 style={{color:"red"}}/>
+                    <div  className="delete-post-btn" onClick={() => console.log('delete post')}>
+                        <FiTrash2 style={{color:"red", position:"relative", top:"-3px"}}/>
                     </div>
                 ) }
 
