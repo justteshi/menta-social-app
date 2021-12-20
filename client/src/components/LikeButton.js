@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 
