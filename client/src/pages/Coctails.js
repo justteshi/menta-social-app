@@ -19,7 +19,7 @@ const Coctails = () => {
         fetchData()
     }, [])
     const listAll = coctails.map((coctail) =>
-        <Card className="post-card-col" key={coctail.idDrink} style={{ width: '18rem', margin:"1em" }}>
+        <Card className="post-card-col" key={coctail.idDrink} style={{ width: '18rem', margin:"1em", background:"lightblue" }}>
             <Card.Img variant="top" src={coctail.strDrinkThumb} />
             <Card.Body style={{position:"relative"}}>
                 <Card.Title>{coctail.strDrink}</Card.Title>
@@ -38,6 +38,11 @@ const Coctails = () => {
     return (
         <Container style={{marginTop:"2em"}}>
             <h3 style={{textAlign:"center"}}>Browse Coctails</h3>
+            <p style={{textAlign:"center", marginTop:"4em", fontStyle:"italic"}}>
+                Some things are classic for a reason. Don't get us wrong, we love and inventive, over the top cocktail as much as anyone, 
+                but the timeless flavors of cocktails like the margarita, the Manhattan, and the martini are the cocktail version of comfort food, and we can't imagine imbibing without them. 
+                Whether you're brushing up on your home mixology menu or looking for a go-to order for your next cocktail hour, these classics will never steer you wrong. 
+            </p>
             <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center"}}>
                 {listAll}
             </div>

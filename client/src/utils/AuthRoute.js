@@ -5,7 +5,6 @@ import { AuthContext } from '../context/auth'
 
 const AuthRoute = ({children}) => {
     const { user } = useContext(AuthContext)
-    console.log(children.type.name)
     if(children.type.name === "Coctails"){
         return user ? children : <Navigate to='/'/>
     }

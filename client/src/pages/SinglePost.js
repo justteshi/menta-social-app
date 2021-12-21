@@ -19,16 +19,17 @@ const SinglePost = () => {
             postId
         }
     })
-    console.log(getPost)
+    // console.log(getPost)
     let postMarkup
     if(!getPost){
         postMarkup = <p>Loading post...</p>
     }
     else {
         const { id, body, createdAt, username, comments, commentCount, likes, likeCount } = getPost.getPost
+        console.log(comments)
         postMarkup = (
             <Container style={{marginTop:"2em"}}>
-                <Card style={{borderRadius:"25px", border:"1px solid black"}}>
+                <Card style={{borderRadius:"25px", background:"lightblue"}}>
                     <div style={{padding:"2em", paddingBottom:"0"}}>
                         <Card.Title>
                             <div  style={{display:"flex"}}>
@@ -48,7 +49,7 @@ const SinglePost = () => {
                             {body}
                         </Card.Body>
                     </div>
-                    <Card.Footer style={{display:"flex", justifyContent:"space-between"}}>
+                    <Card.Footer style={{display:"flex", justifyContent:"space-between", borderRadius:"0 0 25px 25px"}}>
                         <LikeButton post={{id, likes,likeCount}} user={user}></LikeButton>
                         <div>
                             <a href={`/posts/${id}`}>
@@ -65,6 +66,32 @@ const SinglePost = () => {
 
                     </Card.Footer>
                 </Card>
+                <div className='comments'>
+                    
+                    {
+                        comments.map((comment)=>
+                        <div key={comment.id}>
+                            <div style={{width:"5px", height:"30px", background:"darkblue", margin:"auto"}}></div>
+                            <div  style={{width:"40%", padding:"1em",margin:"auto", borderRadius:"25px", background:"lightgray"}}>
+                                <div style={{display:"flex"}}>
+                                    <div style={{
+                                        background: `url(${"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNjc252u1MO3yzxCLBkWcoxksO_nUUuxAOtM4VmmkhR5RusUTzva_ukNbRL1n2vlSj8Y&usqp=CAU"})`,
+                                        backgroundSize: "cover",
+                                        height: "30px",
+                                        width: "30px",
+                                        marginRight:"10px",
+                                        borderRadius: "50%"
+                                    }}></div>
+                                    <h5>{comment.username}</h5>
+
+                                </div>
+                                <p style={{fontStyle:"italic", marginBottom:"0"}}>{comment.body}</p>
+                                <p style={{fontSize:"10px", color:"gray",textAlign:"end",marginBottom:"0"}}>{moment(comment.createdAt).fromNow()}</p>
+                            </div>
+                        </div>
+                        )
+                    }
+                </div>
             </Container>
         )
     }
@@ -79,8 +106,10 @@ const FETCH_POST_QUERY = gql`
                 username
             }
             comments{
+                id
                 body
                 username
+                createdAt
             }
         }
     }
