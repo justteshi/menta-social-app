@@ -10,16 +10,17 @@ const NavBar = () => {
     const [activeItem, setActiveItem] = useState(path)
 
     const handleItemClicked = (name) => setActiveItem(name)
-
     const navBar = user ? (
         <div className='nav-bar-warapper'>
             <Container fluid="sm" className="nav-bar">
                 <ul>
-                    <li><NavLink to="/" active={`${true}`} >{user.username}</NavLink></li>
+                    <li><NavLink to="/" active={`${true}`} >Home</NavLink></li>
+                    <li><NavLink to="/coctails" active={`${true}`} onClick={handleItemClicked}>Coctails</NavLink></li>
+
                 </ul>
                 <ul>
-
-                    <li><NavLink to='' onClick={logout}>Logout</NavLink></li>
+                    <li><NavLink to="/profile" active={`${true}`} onClick={handleItemClicked}>{user.username}</NavLink></li>
+                    <li><NavLink to='' className="logout" onClick={logout}>Logout</NavLink></li>
                 </ul>
 
             </Container>
@@ -29,6 +30,7 @@ const NavBar = () => {
             <Container fluid="sm" className="nav-bar">
                 <ul>
                     <li><NavLink to="/" active={`${activeItem === 'home'}`} onClick={handleItemClicked}>Home</NavLink></li>
+
                 </ul>
                 <ul>
 

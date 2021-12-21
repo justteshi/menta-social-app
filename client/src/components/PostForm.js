@@ -28,17 +28,8 @@ const PostForm = () => {
     }
 
     return (
-        <div style={{marginTop:'2em', marginBottom: '2em', borderRadius:'25px', border:'1px solid aqua', background:'lightblue'}}>
-            <h2 style={{textAlign:'center'}}>Create a post:</h2>
-            {/* {Object.keys(error).length > 0 && (
-                            <Alert variant='danger'>
-                                <ul className='list'>
-                                {Object.values(error).map((value) => (
-                                    <li key={value}>{value}</li>
-                                ))}
-                                </ul>
-                            </Alert>
-                        )} */}
+        <div style={{ borderRadius:'25px', border:'1px solid aqua', background:'lightblue'}}>
+            <h2 style={{textAlign:'center',marginTop:"0.5em"}}>Create a post:</h2>
             { error && (
                 <Alert variant='danger'>
                     <ul className='error-list'>
@@ -46,9 +37,11 @@ const PostForm = () => {
                     </ul>
                 </Alert>
             ) }
-            <Form onSubmit={onSubmit} noValidate style={{display:'flex',justifyContent:'center'}}>
-                <Form.Group  controlId="formBasicCreatePost" className='form-row'>
-                    <Form.Control 
+            <Form onSubmit={onSubmit} noValidate style={{marginTop:"1em"}}>
+                <Form.Group  controlId="formBasicCreatePost" className='form-row' style={{width:"50%",margin:"auto"}}>
+                    <Form.Control
+                        as="textarea" 
+                        // rows={3} 
                         type="text" 
                         placeholder="Write your text here..."
                         name='body'
@@ -56,7 +49,9 @@ const PostForm = () => {
                         value={values.body}
                     />
                 </Form.Group>
-                <Button type="submit" variant='warning' style={{height:'38px'}}>Post</Button>
+                <div style={{display:"flex", justifyContent:"center",marginBottom:"1em"}}>
+                    <Button type="submit" variant='warning' style={{width:'200px',marginTop:"1em"}}>Post</Button>
+                </div>
             </Form>
         </div>
     )

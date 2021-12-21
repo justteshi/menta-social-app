@@ -12,13 +12,30 @@ const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCou
     const { user } = useContext(AuthContext)
 
     return (
-        <Card >
-            <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNjc252u1MO3yzxCLBkWcoxksO_nUUuxAOtM4VmmkhR5RusUTzva_ukNbRL1n2vlSj8Y&usqp=CAU" />
-            <Card.Body>
-                <Card.Title>{username}</Card.Title>
-                <Card.Subtitle as={Link} to={`/posts/${id}`} style={{fontSize: 14, color:"lightgrey"}}>{moment(createdAt).fromNow()}</Card.Subtitle>
-                <Card.Text>{body}</Card.Text>
-            </Card.Body>
+
+        <Card style={{borderRadius:"25px", border:"1px solid black"}}>
+            <div style={{padding:"2em", paddingBottom:"0"}}>
+                {user && user.username === username && (
+                    <div  className="delete-post-btn" onClick={() => console.log('delete post')}>
+                        <FiTrash2 style={{color:"red", position:"relative", top:"-3px"}}/>
+                    </div>
+                ) }
+                <Card.Title>
+                    <div  style={{display:"flex"}}>
+                        <Card.Img className='post-profile-pic' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNjc252u1MO3yzxCLBkWcoxksO_nUUuxAOtM4VmmkhR5RusUTzva_ukNbRL1n2vlSj8Y&usqp=CAU">
+
+                        </Card.Img>
+                        <div>
+                            <h3>{username}</h3>
+                            <Card.Subtitle as={Link} to={`/posts/${id}`} style={{fontSize: 16, color:"lightgrey"}}>{moment(createdAt).fromNow()}</Card.Subtitle>
+                        </div>
+                    </div>
+                </Card.Title>
+                
+                <Card.Body>
+                    {body}
+                </Card.Body>
+            </div>
             <Card.Footer style={{display:"flex", justifyContent:"space-between"}}>
                 <LikeButton post={{id, likes,likeCount}} user={user}></LikeButton>
                 <div>
@@ -28,11 +45,7 @@ const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCou
                     {commentCount}
 
                 </div>
-                {user && user.username === username && (
-                    <div  className="delete-post-btn" onClick={() => console.log('delete post')}>
-                        <FiTrash2 style={{color:"red", position:"relative", top:"-3px"}}/>
-                    </div>
-                ) }
+                
 
             </Card.Footer>
         </Card>
