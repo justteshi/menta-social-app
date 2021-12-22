@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { AuthContext } from '../context/auth'
-import logo from '../menta_logo.png'
+import styles from './NavBar.module.css'
 
 const NavBar = () => {
     const { user, logout } = useContext(AuthContext)
@@ -11,46 +11,32 @@ const NavBar = () => {
     const [activeItem, setActiveItem] = useState(path)
     const handleItemClicked = (name) => setActiveItem(name)
     const navBar = user ? (
-        <div className='nav-bar-warapper'>
-            <Container fluid="sm" className="nav-bar">
+        <div className={styles.NavBarWrapper}>
+            <Container fluid="sm" className={styles.NavBar}>
                 <ul>
                     <li><NavLink to="/" active={`${true}`} >Home</NavLink></li>
                     <li><NavLink to="/coctails" active={`${true}`} onClick={handleItemClicked}>Coctails</NavLink></li>
 
                 </ul>
                 <a href="/">
-                    <div style={{
-                        background: `url(${logo})`,
-                        backgroundSize: "cover",
-                        backgroundPosition:"top",
-                        height: "50px",
-                        width: "100px",
-                        margin:"auto",
-                    }}></div>
+                    <div className={styles.SiteLogo}></div>
                 </a>
                 <ul>
                     <li><NavLink to="/profile" active={`${true}`} onClick={handleItemClicked}>{user.username}</NavLink></li>
-                    <li><NavLink to='' className="logout" onClick={logout}>Logout</NavLink></li>
+                    <li><NavLink to='' className={styles.Logout} onClick={logout}>Logout</NavLink></li>
                 </ul>
 
             </Container>
         </div>
     ) : (
-        <div className='nav-bar-warapper'>
-            <Container fluid="sm" className="nav-bar">
+        <div className={styles.NavBarWrapper}>
+            <Container fluid="sm" className={styles.NavBar}>
                 <ul>
                     <li><NavLink to="/" active={`${activeItem === 'home'}`} onClick={handleItemClicked}>Home</NavLink></li>
 
                 </ul>
                 <a href="/">
-                    <div style={{
-                        background: `url(${logo})`,
-                        backgroundSize: "cover",
-                        backgroundPosition:"top",
-                        height: "50px",
-                        width: "100px",
-                        margin:"auto",
-                    }}></div>
+                    <div className={styles.SiteLogo}></div>
                 </a>
                 <ul>
 

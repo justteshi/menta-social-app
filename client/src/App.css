@@ -2,30 +2,9 @@
   margin: 0;
   padding: 0;
 }
-.nav-bar-warapper{
-  border-bottom: 1px solid black;
-}
 
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-}
-.nav-bar ul{
-  display: flex;
-  margin-bottom: 0;
-  padding: 1em;
-}
-.nav-bar ul li {
-  list-style: none;
-
-}
-.nav-bar ul li a {
-  color: black;
-  text-decoration: none;
-  padding: 1em;
-}
-.nav-bar ul li .active{
-  color: aqua;
+.active{
+  color: aqua !important;
   border-bottom: 2px solid aqua;
 }
 
@@ -51,25 +30,4 @@
 @keyframes fadeIn {
   0% {opacity:0;}
   100% {opacity:1;}
-}
-.delete-post-btn{
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.delete-post-btn:hover {
-  cursor: pointer;
-}
-.like-btn-wrapper svg:hover {
-  cursor: pointer;
-}
-
-.post-profile-pic {
-  width: 60px;
-  height: 60px;
-  margin-right: 1em;
-}
-.logout {
-  color: black !important;
-  border-bottom: none !important;
 }

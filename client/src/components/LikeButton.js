@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
-
+import styles from './LikeButton.module.css'
 
 const LikeButton = ({ post: { id, likes, likeCount }, user }) => {
     const [liked, setLiked] = useState(false)
@@ -22,19 +22,19 @@ const LikeButton = ({ post: { id, likes, likeCount }, user }) => {
     const likeButton = user ? (
         liked ? (
             //liked
-            <AiFillLike style={{fontSize:"20px", color:"#0d6efd"}}/>
+            <AiFillLike className={styles.LikeBtn}/>
         ) : (
             //not liked
-            <AiOutlineLike style={{fontSize:"20px", color:"#0d6efd"}}/>
+            <AiOutlineLike className={styles.LikeBtn}/>
         )
     ) : (
         <a href='/login'>
-            <AiOutlineLike style={{fontSize:"20px"}}/>
+            <AiOutlineLike className={styles.LikeBtnNotLoggedIn}/>
         </a>
     )
 
     return (
-        <div style={{display:"flex"}} onClick={likePost} className='like-btn-wrapper'>
+        <div className={styles.LikeBtnWrapper} onClick={likePost}>
             {likeButton}
             {likeCount}
         </div>

@@ -4,6 +4,7 @@ import { useForm } from '../utils/hooks'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { FETCH_POSTS_QUERY } from '../utils/graphql'
+import styles from './PostForm.module.css'
 
 const PostForm = () => {
     const {values, onChange, onSubmit} = useForm(createPostCallback, {
@@ -28,8 +29,8 @@ const PostForm = () => {
     }
 
     return (
-        <div style={{ borderRadius:'25px', border:'1px solid aqua', background:'lightblue'}}>
-            <h2 style={{textAlign:'center',marginTop:"0.5em"}}>Create a post:</h2>
+        <div className={styles.PostFormWrapper}>
+            <h2 className={styles.CreatePostTitle}>Create a post:</h2>
             { error && (
                 <Alert variant='danger'>
                     <ul className='error-list'>
@@ -37,8 +38,8 @@ const PostForm = () => {
                     </ul>
                 </Alert>
             ) }
-            <Form onSubmit={onSubmit} noValidate style={{marginTop:"1em"}}>
-                <Form.Group  controlId="formBasicCreatePost" className='form-row' style={{width:"50%",margin:"auto"}}>
+            <Form onSubmit={onSubmit} noValidate className={styles.PostForm}>
+                <Form.Group  controlId="formBasicCreatePost" className={styles.PostFormRow}>
                     <Form.Control
                         as="textarea" 
                         // rows={3} 
@@ -49,8 +50,8 @@ const PostForm = () => {
                         value={values.body}
                     />
                 </Form.Group>
-                <div style={{display:"flex", justifyContent:"center",marginBottom:"1em"}}>
-                    <Button type="submit" variant='warning' style={{width:'200px',marginTop:"1em"}}>Post</Button>
+                <div className={styles.PostFormSubmitBtnWrapper}>
+                    <Button type="submit" variant='warning' className={styles.PostFormSubmitBtn}>Post</Button>
                 </div>
             </Form>
         </div>

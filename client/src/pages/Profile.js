@@ -66,7 +66,7 @@ const Profile = () => {
                     <h3 style={{textAlign:"center"}}>My posts:</h3>
                     {
                         userOwnPosts.map(post =>
-                            <div style={{marginTop:"1em"}}>
+                            <div key={post.id} style={{marginTop:"1em"}}>
                                 <PostCard post={post} key={post.id}/> 
                             </div> 
                         )

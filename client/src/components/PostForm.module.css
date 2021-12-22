@@ -1,0 +1,26 @@
+.PostFormWrapper {
+    border-radius: 25px;
+    border: 1px solid aqua;
+    background-color: lightblue;
+}
+.CreatePostTitle {
+    text-align: center;
+    margin-top: .5em;
+}
+.PostForm {
+    margin-top: 1em;
+}
+.PostFormRow {
+    width: 50%;
+    margin:auto;
+    margin-bottom: 1m;
+}
+.PostFormSubmitBtnWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+.PostFormSubmitBtn {
+    width: 200px;
+    margin-top: 1em;
+}

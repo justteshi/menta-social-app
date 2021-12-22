@@ -1,0 +1,39 @@
+
+.NavBarWrapper{
+    border-bottom: 1px solid black;
+}
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.NavBar ul{
+    display: flex;
+    margin-bottom: 0;
+    padding: 1em;
+  }
+.NavBar ul li {
+    list-style: none;
+}
+.NavBar ul li a {
+    color: black;
+    text-decoration: none;
+    padding: 1em;
+}
+.NavBar ul li a:hover {
+    border-bottom: 2px solid aqua;
+}
+.Logout {
+    color: black !important;
+    border-bottom: none !important;
+    background: lightblue;
+    border-radius: 25px;
+}
+/* .SiteLogo {
+    background: url(../menta_logo.png);
+    background-size: cover;
+    background-position: top;
+    height: 50px;
+    width: 100px;
+    margin: auto;
+} */

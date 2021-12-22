@@ -1,0 +1,42 @@
+.PostCardWrapper {
+    border-radius: 25px;
+    border: 1px solid black;
+}
+.PostCardPadding {
+    padding: 2em;
+    padding-bottom: 0;
+}
+.DeletePostBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.DeletePostBtn:hover {
+    cursor: pointer;
+}
+.DeletePostBtnIcon {
+    color:red;
+    position: relative;
+    top: -3px;
+}
+.PostProfilePic {
+    width: 60px;
+    height: 60px;
+    margin-right: 1em;
+}
+.PostCardTitle {
+    display: flex;
+}
+.PostCardSubtitle {
+    font-size: 16px;
+    color: lightgrey;
+}
+.PostCardFooter {
+    display: flex;
+    justify-content: space-between;
+}
+.CommentIcon {
+    font-size: 20px;
+    position: relative;
+    top: -3px;
+}

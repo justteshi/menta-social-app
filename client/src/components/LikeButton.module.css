@@ -1,0 +1,13 @@
+.LikeBtn {
+    font-size: 20px;
+    color: hsl(216, 98%, 52%)
+}
+.LikeBtnNotLoggedIn {
+    font-size: 20px;
+}
+.LikeBtnWrapper {
+    display: flex;
+}
+.LikeBtnWrapper svg:hover {
+    cursor: pointer;
+}
