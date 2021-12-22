@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import { useForm } from '../utils/hooks'
 import { AuthContext } from '../context/auth'
 import { useNavigate } from 'react-router-dom';
+import styles from './Login.module.css'
 
 const Login = (props) => {
     let navigate = useNavigate() 
@@ -38,14 +39,14 @@ const Login = (props) => {
     return (
         <Container>
             {loading ? (
-                <div style={{display:"flex", justifyContent:"center", marginTop:"10em"}}>
+                <div className={styles.LoginPageLoading}>
                     <Spinner animation="border" variant="info" style={{}} />
                 </div>
             ) : (
                 <>
-                    <p style={{textAlign:"center", marginTop:"4em", fontStyle:"italic"}}>If you want to like or comment posts, please Login or <a href='/register'>Sing up</a> first.</p>
-                    <Form style={{width:"50%", margin:"auto",marginTop:"1em"}} noValidate onSubmit={onSubmit} >
-                        <h1 style={{textAlign:"center"}}>Login</h1>
+                    <p className={styles.LoginPageNotLoggedIn}>If you want to like or comment posts, please Login or <a href='/register'>Sing up</a> first.</p>
+                    <Form className={styles.LoginForm} noValidate onSubmit={onSubmit} >
+                        <h1 className={styles.LoginTitle}>Login</h1>
                         {Object.keys(errors).length > 0 && (
                             <Alert variant='danger'>
                                 <ul className='error-list'>

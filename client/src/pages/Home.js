@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import PostCard from '../components/PostCard'
 import PostForm from '../components/PostForm'
 import  { FETCH_POSTS_QUERY } from '../utils/graphql'
+import styles from './Home.module.css'
 
 const Home = () => {
     const { user } = useContext(AuthContext)
@@ -18,9 +19,9 @@ const Home = () => {
         posts = data.getPosts
     }
     return (
-        <Container style={{marginBottom:"4em", marginTop:"4em"}}>
+        <Container className={styles.HomePageWrapper}>
             {user ? "" : (
-                <p style={{textAlign:"center", marginTop:"4em", fontStyle:"italic"}}>If you want to create posts, please <a href='/login    '>Login</a> or <a href='/register'>Sing up</a> first.</p>
+                <p className={styles.HomePageNotLoggedIn}>If you want to create posts, please <a href='/login    '>Login</a> or <a href='/register'>Sing up</a> first.</p>
             )}
             
             <Row>
@@ -31,14 +32,14 @@ const Home = () => {
                 )}
             </Row>
             <Row>
-                <h2 style={{textAlign:"center",margin:"1em 0 1em 0"}}>Recent Posts</h2>
+                <h2 className={styles.HomeRecentPosts}>Recent Posts</h2>
             </Row>
-            <Row style={{display:"flex",flexWrap:"wrap"}}>
+            <Row className={styles.HomePagePostsWrapper}>
                 {loading ? (
-                    <h3 style={{textAlign:"center"}}>Loading posts...</h3>
+                    <h3 className={styles.HomeLoadingPosts}>Loading posts...</h3>
                 ) : (
                     posts && posts.map(post => (
-                        <Col key={post.id} style={{flex:"80%", maxWidth:"80%", margin:"auto", marginBottom:"10px"}} className="post-card-col">
+                        <Col key={post.id} className={styles.HomePagePostCol}>
                             <PostCard post={post} />
                         </Col>
                     ))

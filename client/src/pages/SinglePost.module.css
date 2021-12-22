@@ -1,0 +1,73 @@
+.SinglePostWrapper {
+    margin-top: 2em;
+}
+.SinglePostCard {
+    border-radius: 25px;
+    background: lightblue;
+}
+.SinglePostBodyWrapper {
+    padding: 2em;
+    padding-bottom: 0;
+}
+.SinglePostCardImageWrapper {
+    display: flex;
+}
+.SinglePostCardImageWrapper img {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+.SinglePostCardSubtitle {
+    color: gray;
+}
+.SinglePostCardFooter {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 25px 25px;
+}
+.SinglePostCommentBtn {
+    font-size: 20px;
+    position: relative;
+    top: -3px;
+}
+.DeletePostBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.DeletePostBtn:hover {
+    cursor: pointer;
+}
+.DeletePostBtnIcon {
+    color:red;
+    position: relative;
+    top: -3px;
+}
+
+.CommentLine {
+    width: 5px;
+    height: 30px;
+    background: darkblue;
+    margin: auto;
+}
+.SingleCommentWrapper {
+    width: 40%;
+    padding: 1em;
+    margin: auto;
+    border-radius: 25px;
+    background: lightgray;
+}
+.SingleCommentTitleWrapper  {
+    display: flex;
+}
+.SingleCommentBody {
+    font-style: italic;
+    margin-bottom: 0;
+}
+.SingleCommentCreatedAt {
+    font-size: 10px;
+    color: gray;
+    text-align: end;
+    margin-bottom: 0;
+}

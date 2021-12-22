@@ -7,9 +7,8 @@ import moment from 'moment'
 import LikeButton from '../components/LikeButton'
 import { AiOutlineComment } from 'react-icons/ai'
 import { FiTrash2 } from 'react-icons/fi'
-
 import { AuthContext } from '../context/auth'
-
+import styles from './SinglePost.module.css'
 
 const SinglePost = () => {
     const { user } = useContext(AuthContext)
@@ -28,17 +27,18 @@ const SinglePost = () => {
         const { id, body, createdAt, username, comments, commentCount, likes, likeCount } = getPost.getPost
         console.log(comments)
         postMarkup = (
-            <Container style={{marginTop:"2em"}}>
-                <Card style={{borderRadius:"25px", background:"lightblue"}}>
-                    <div style={{padding:"2em", paddingBottom:"0"}}>
+            <Container className={styles.SinglePostWrapper}>
+                <Card className={styles.SinglePostCard}>
+                    <div className={styles.SinglePostBodyWrapper}>
                         <Card.Title>
-                            <div  style={{display:"flex"}}>
-                                <Card.Img className='post-profile-pic' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNjc252u1MO3yzxCLBkWcoxksO_nUUuxAOtM4VmmkhR5RusUTzva_ukNbRL1n2vlSj8Y&usqp=CAU">
-
+                            <div className={styles.SinglePostCardImageWrapper}>
+                                <Card.Img 
+                                    className='post-profile-pic' 
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNjc252u1MO3yzxCLBkWcoxksO_nUUuxAOtM4VmmkhR5RusUTzva_ukNbRL1n2vlSj8Y&usqp=CAU">
                                 </Card.Img>
                                 <div>
                                     <h3>{username}</h3>
-                                    <Card.Subtitle style={{color:"gray"}}>
+                                    <Card.Subtitle className={styles.SinglePostCardSubtitle}>
                                         {moment(createdAt).fromNow()}
                                     </Card.Subtitle>
                                 </div>
@@ -49,18 +49,18 @@ const SinglePost = () => {
                             {body}
                         </Card.Body>
                     </div>
-                    <Card.Footer style={{display:"flex", justifyContent:"space-between", borderRadius:"0 0 25px 25px"}}>
+                    <Card.Footer className={styles.SinglePostCardFooter}>
                         <LikeButton post={{id, likes,likeCount}} user={user}></LikeButton>
                         <div>
                             <a href={`/posts/${id}`}>
-                            <AiOutlineComment style={{fontSize:"20px", position:"relative", top:"-3px"}} />
+                                <AiOutlineComment className={styles.SinglePostCommentBtn} />
                             </a>
                             {commentCount}
 
                         </div>
                         {user && user.username === username && (
-                            <div  className="delete-post-btn" onClick={() => console.log('delete post')}>
-                                <FiTrash2 style={{color:"red", position:"relative", top:"-3px"}}/>
+                            <div  className={styles.DeletePostBtn} onClick={() => console.log('delete post')}>
+                                <FiTrash2 className={styles.DeletePostBtnIcon}/>
                             </div>
                         ) }
 
@@ -71,9 +71,9 @@ const SinglePost = () => {
                     {
                         comments.map((comment)=>
                         <div key={comment.id}>
-                            <div style={{width:"5px", height:"30px", background:"darkblue", margin:"auto"}}></div>
-                            <div  style={{width:"40%", padding:"1em",margin:"auto", borderRadius:"25px", background:"lightgray"}}>
-                                <div style={{display:"flex"}}>
+                            <div className={styles.CommentLine}></div>
+                            <div className={styles.SingleCommentWrapper}>
+                                <div className={styles.SingleCommentTitleWrapper}>
                                     <div style={{
                                         background: `url(${"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNjc252u1MO3yzxCLBkWcoxksO_nUUuxAOtM4VmmkhR5RusUTzva_ukNbRL1n2vlSj8Y&usqp=CAU"})`,
                                         backgroundSize: "cover",
@@ -85,8 +85,8 @@ const SinglePost = () => {
                                     <h5>{comment.username}</h5>
 
                                 </div>
-                                <p style={{fontStyle:"italic", marginBottom:"0"}}>{comment.body}</p>
-                                <p style={{fontSize:"10px", color:"gray",textAlign:"end",marginBottom:"0"}}>{moment(comment.createdAt).fromNow()}</p>
+                                <p className={styles.SingleCommentBody}>{comment.body}</p>
+                                <p className={styles.SingleCommentCreatedAt}>{moment(comment.createdAt).fromNow()}</p>
                             </div>
                         </div>
                         )

@@ -1,0 +1,51 @@
+.ProfilePageWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 4em 4em 2em 4em;
+}
+.ProfileLeft {
+    width: 30%;
+    background: lightblue;
+    padding: 2em;
+    border-radius: 25px;
+}
+.ProfileName {
+    text-align: center;
+    margin-top: 1em;
+}
+.ProfileEmail {
+    text-align: center;
+    margin-top: 1em;
+}
+.ProfileRight {
+    width: 65%;
+    background: lightblue;
+    border-radius: 25px;
+}
+.ProfileInfoTitle {
+    text-align: center;
+    margin-top: 1em;
+}
+.ProfileFormBtnWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+.ProfileFormBtn {
+    width: 50%;
+    margin-top: 1em;
+}
+.ProfilePostsWrapper {
+    padding: 2em 4em 2em 4em;
+}
+.OwnPostsWrapper {
+    padding: 2em;
+    background: lightblue;
+    border-radius: 25px;
+}
+.OwnPostsTitle {
+    text-align: center;
+}
+.OwnPost {
+    margin-top: 1em;
+}

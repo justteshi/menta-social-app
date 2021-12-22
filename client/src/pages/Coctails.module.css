@@ -1,0 +1,31 @@
+.CoctailCard {
+    width: 18rem;
+    margin: 1em;
+    background: lightblue;
+    animation: fadeIn liner 1s;
+    -moz-animation: fadeIn linear 1s;
+}
+.CoctailPageWrapper {
+    margin-top: 2em;
+}
+.CoctailPageTitle {
+    text-align: center;
+}
+.CoctailPageText {
+    text-align: center;
+    margin-top: 4em;
+    font-style: italic;
+}
+.CoctailsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+  
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+  

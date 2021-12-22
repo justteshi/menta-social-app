@@ -15,7 +15,7 @@ const NavBar = () => {
             <Container fluid="sm" className={styles.NavBar}>
                 <ul>
                     <li><NavLink to="/" active={`${true}`} >Home</NavLink></li>
-                    <li><NavLink to="/coctails" active={`${true}`} onClick={handleItemClicked}>Coctails</NavLink></li>
+                    <li><NavLink to="/coctails" active={`${true}`} onClick={handleItemClicked}>Cocktails</NavLink></li>
 
                 </ul>
                 <a href="/">

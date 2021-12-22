@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
 import { useForm } from '../utils/hooks'
 import { AuthContext } from '../context/auth'
+import styles from './Register.module.css'
 
 const Register = () => {
     const context = useContext(AuthContext)
@@ -37,14 +38,14 @@ const Register = () => {
     return (
         <Container>
             {loading ? (
-                <div style={{display:"flex", justifyContent:"center", marginTop:"10em"}}>
-                    <Spinner animation="border" variant="info" style={{}} />
+                <div className={styles.RegisterLoading}>
+                    <Spinner animation="border" variant="info" />
                 </div>
             ) : (
                 <>
 
-                    <Form style={{width:"50%", margin:"auto",marginTop:"4em"}} noValidate onSubmit={onSubmit} >
-                        <h1 style={{textAlign:"center"}}>Register</h1>
+                    <Form className={styles.RegisterForm} noValidate onSubmit={onSubmit} >
+                        <h1 className={styles.RegisterPageTitle}>Register</h1>
                         {Object.keys(errors).length > 0 && (
                             <Alert variant='danger'>
                                 <ul className='error-list'>
