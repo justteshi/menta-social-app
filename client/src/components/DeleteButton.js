@@ -5,12 +5,10 @@ import styles from './DeleteButton.module.css'
 import { FiTrash2 } from 'react-icons/fi'
 import { Modal, Button } from 'react-bootstrap'
 import { FETCH_POSTS_QUERY } from '../utils/graphql'
-import { useNavigate } from 'react-router-dom';
 
 
 const DeleteButton = ({postId}) => {
     const [showModal, setShowModal] = useState(false)
-    let navigate = useNavigate()
     const handleModalClose = () => setShowModal(false)
     const handleModalShow = () => setShowModal(true)
     const [deletePost] = useMutation(DELETE_POST_MUTATION, {

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import gql from 'graphql-tag'
-import { useQuery } from '@apollo/client'
-import {  Card, Container } from 'react-bootstrap'
+import { useMutation, useQuery } from '@apollo/client'
+import {  Card, Container, Form, Button } from 'react-bootstrap'
 import moment from 'moment'
 import LikeButton from '../components/LikeButton'
 import { AiOutlineComment } from 'react-icons/ai'
@@ -13,10 +13,21 @@ import styles from './SinglePost.module.css'
 const SinglePost = () => {
     const { user } = useContext(AuthContext)
     const {postId} = useParams()
+    const [comment, setComment] = useState('')
+
     const { data: getPost} = useQuery(FETCH_POST_QUERY, {
         variables: {
             postId
         }
+    })
+    const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
+        update(){
+            setComment('')
+        },
+        variables: {
+            postId,
+            body: comment
+         }
     })
     // console.log(getPost)
     let postMarkup
@@ -25,7 +36,7 @@ const SinglePost = () => {
     }
     else {
         const { id, body, createdAt, username, comments, commentCount, likes, likeCount } = getPost.getPost
-        console.log(comments)
+        // console.log(comments)
         postMarkup = (
             <Container className={styles.SinglePostWrapper}>
                 <Card className={styles.SinglePostCard}>
@@ -64,6 +75,42 @@ const SinglePost = () => {
 
                     </Card.Footer>
                 </Card>
+                {user && <div >
+                    <div className={styles.CommentLine}></div>
+                    <p style={{fontWeight:"bold",textAlign:"center",margin:"auto", marginBottom:"0",padding:"1em", background:"gray",borderRadius:"25px", width:"40%"}}>Post a comment</p>
+                    <div className={styles.CommentLine}></div>
+                    <Form
+                        className={styles.CommentForm}
+                        noValidate 
+                        // onSubmit={onSubmit} 
+                    >
+                        <Form.Group  controlId="formBasicCreateComment" className='form-row'>
+                            <Form.Control
+                                type="text" 
+                                placeholder="Write comment here..."
+                                name='comment'
+                                value={comment}
+                                onChange={event => setComment(event.target.value)}
+                                // value={values.body}
+                            />
+                        </Form.Group>
+                        <div className={styles.CommentBtnWrapper}>
+                            <Button 
+                                type="submit" 
+                                variant='warning' 
+                                className={styles.CommentBtn}
+                                disabled={comment.trim() === ''}
+                                onClick={(e)=> {
+                                    e.preventDefault()
+                                    submitComment()
+                                    setComment('')
+                                }}
+                            >
+                                Post
+                            </Button>
+                        </div>
+                    </Form>
+                </div> }
                 <div className='comments'>
                     
                     {
@@ -95,6 +142,19 @@ const SinglePost = () => {
     }
     return postMarkup
 }
+
+const SUBMIT_COMMENT_MUTATION = gql`
+    mutation($postId: String!, $body: String!){
+        createComment(postId: $postId, body: $body){
+            id
+            comments{
+                id body createdAt username
+            }
+            commentCount
+        }
+    }
+`
+
 
 const FETCH_POST_QUERY = gql`
     query($postId:ID!){
