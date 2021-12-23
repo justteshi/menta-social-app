@@ -10,4 +10,5 @@
 }
 .LikeBtnWrapper svg:hover {
     cursor: pointer;
+    color: blue;
 }

@@ -31,19 +31,7 @@
     position: relative;
     top: -3px;
 }
-.DeletePostBtn {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
-.DeletePostBtn:hover {
-    cursor: pointer;
-}
-.DeletePostBtnIcon {
-    color:red;
-    position: relative;
-    top: -3px;
-}
+
 
 .CommentLine {
     width: 5px;

@@ -40,3 +40,9 @@
     position: relative;
     top: -3px;
 }
+.ReadMoreBtn {
+    text-decoration: none;
+}
+.ReadMoreBtn:hover {
+    font-weight: bold;
+}

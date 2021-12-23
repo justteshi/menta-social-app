@@ -7,6 +7,7 @@ import { AiOutlineComment } from 'react-icons/ai'
 import { FiTrash2 } from 'react-icons/fi'
 import LikeButton from './LikeButton'
 import styles from './PostCard.module.css'
+import DeleteButton from './DeleteButton'
 
 const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCount, likes }}) => {
     
@@ -17,9 +18,7 @@ const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCou
         <Card className={styles.PostCardWrapper} >
             <div className={styles.PostCardPadding} >
                 {user && user.username === username && (
-                    <div  className={styles.DeletePostBtn} onClick={() => console.log('delete post')}>
-                        <FiTrash2 className={styles.DeletePostBtnIcon}/>
-                    </div>
+                    <DeleteButton postId={id}></DeleteButton>
                 ) }
                 <Card.Title>
                     <div  className={styles.PostCardTitle}>
@@ -39,6 +38,7 @@ const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCou
             </div>
             <Card.Footer className={styles.PostCardFooter}>
                 <LikeButton post={{id, likes,likeCount}} user={user}></LikeButton>
+                <a className={styles.ReadMoreBtn} href={`/posts/${id}`}>Read more...</a>
                 <div>
                     <a href={`/posts/${id}`}>
                     <AiOutlineComment className={styles.CommentIcon} />

@@ -6,8 +6,8 @@ import {  Card, Container } from 'react-bootstrap'
 import moment from 'moment'
 import LikeButton from '../components/LikeButton'
 import { AiOutlineComment } from 'react-icons/ai'
-import { FiTrash2 } from 'react-icons/fi'
 import { AuthContext } from '../context/auth'
+import DeleteButton from '../components/DeleteButton'
 import styles from './SinglePost.module.css'
 
 const SinglePost = () => {
@@ -59,9 +59,7 @@ const SinglePost = () => {
 
                         </div>
                         {user && user.username === username && (
-                            <div  className={styles.DeletePostBtn} onClick={() => console.log('delete post')}>
-                                <FiTrash2 className={styles.DeletePostBtnIcon}/>
-                            </div>
+                            <DeleteButton postId={id}></DeleteButton>
                         ) }
 
                     </Card.Footer>
