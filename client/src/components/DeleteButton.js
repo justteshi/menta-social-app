@@ -7,6 +7,7 @@ import { Modal, Button } from 'react-bootstrap'
 import { FETCH_POSTS_QUERY } from '../utils/graphql'
 
 
+
 const DeleteButton = ({postId}) => {
     const [showModal, setShowModal] = useState(false)
     const handleModalClose = () => setShowModal(false)

@@ -11,3 +11,6 @@
     position: relative;
     top: -3px;
 }
+.DeletePostBtnIcon:hover {
+    color: darkred;
+}

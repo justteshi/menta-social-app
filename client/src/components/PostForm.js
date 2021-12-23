@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Alert } from 'react-bootstrap'
+import { Form, Button, Alert, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { useForm } from '../utils/hooks'
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
@@ -51,7 +51,11 @@ const PostForm = () => {
                     />
                 </Form.Group>
                 <div className={styles.PostFormSubmitBtnWrapper}>
-                    <Button type="submit" variant='warning' className={styles.PostFormSubmitBtn}>Post</Button>
+                    <OverlayTrigger placement='right'
+                        overlay={<Tooltip id={`tooltip-right`}><strong>Create a post</strong>.</Tooltip>}
+                    >
+                        <Button type="submit" variant='warning' className={styles.PostFormSubmitBtn}>Post</Button>
+                    </OverlayTrigger>
                 </div>
             </Form>
         </div>

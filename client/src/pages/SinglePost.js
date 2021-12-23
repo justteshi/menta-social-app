@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import gql from 'graphql-tag'
 import { useMutation, useQuery } from '@apollo/client'
-import {  Card, Container, Form, Button } from 'react-bootstrap'
+import {  Card, Container, Form, Button, OverlayTrigger, Tooltip, Spinner } from 'react-bootstrap'
 import moment from 'moment'
 import LikeButton from '../components/LikeButton'
 import { AiOutlineComment } from 'react-icons/ai'
@@ -32,7 +32,9 @@ const SinglePost = () => {
     // console.log(getPost)
     let postMarkup
     if(!getPost){
-        postMarkup = <p>Loading post...</p>
+        postMarkup = <div className={styles.RegisterLoading}>
+                        <Spinner animation="border" variant="info" />
+                    </div>
     }
     else {
         const { id, body, createdAt, username, comments, commentCount, likes, likeCount } = getPost.getPost
@@ -95,19 +97,23 @@ const SinglePost = () => {
                             />
                         </Form.Group>
                         <div className={styles.CommentBtnWrapper}>
-                            <Button 
-                                type="submit" 
-                                variant='warning' 
-                                className={styles.CommentBtn}
-                                disabled={comment.trim() === ''}
-                                onClick={(e)=> {
-                                    e.preventDefault()
-                                    submitComment()
-                                    setComment('')
-                                }}
+                            <OverlayTrigger placement='top'
+                                overlay={<Tooltip id={`tooltip-right`}><strong>Post comment</strong>.</Tooltip>}
                             >
-                                Post
-                            </Button>
+                                <Button 
+                                    type="submit" 
+                                    variant='warning' 
+                                    className={styles.CommentBtn}
+                                    disabled={comment.trim() === ''}
+                                    onClick={(e)=> {
+                                        e.preventDefault()
+                                        submitComment()
+                                        setComment('')
+                                    }}
+                                >
+                                    Post
+                                </Button>
+                            </OverlayTrigger>
                         </div>
                     </Form>
                 </div> }

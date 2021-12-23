@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Card } from 'react-bootstrap'
+import { Card,OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { AuthContext } from '../context/auth'
 import moment from 'moment'
 import { AiOutlineComment } from 'react-icons/ai'
@@ -37,11 +37,19 @@ const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCou
             </div>
             <Card.Footer className={styles.PostCardFooter}>
                 <LikeButton post={{id, likes,likeCount}} user={user}></LikeButton>
-                <a className={styles.ReadMoreBtn} href={`/posts/${id}`}>Read more...</a>
+                <OverlayTrigger placement='top'
+                    overlay={<Tooltip id={`tooltip-right`}><strong>View the post</strong>.</Tooltip>}
+                >
+                    <a className={styles.ReadMoreBtn} href={`/posts/${id}`}>Read more...</a>       
+                </OverlayTrigger>
                 <div>
-                    <a href={`/posts/${id}`}>
-                    <AiOutlineComment className={styles.CommentIcon} />
-                    </a>
+                    <OverlayTrigger placement='top'
+                        overlay={<Tooltip id={`tooltip-right`}><strong>Comment a post</strong>.</Tooltip>}
+                    >
+                        <a href={`/posts/${id}`}>
+                            <AiOutlineComment className={styles.CommentIcon} />
+                        </a>
+                    </OverlayTrigger>
                     {commentCount}
 
                 </div>
