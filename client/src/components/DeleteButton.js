@@ -9,6 +9,7 @@ import { FETCH_POSTS_QUERY } from '../utils/graphql'
 
 
 const DeleteButton = ({postId}) => {
+    console.log(postId)
     const [showModal, setShowModal] = useState(false)
     const handleModalClose = () => setShowModal(false)
     const handleModalShow = () => setShowModal(true)
@@ -37,7 +38,6 @@ const DeleteButton = ({postId}) => {
         <>
             <div  className={styles.DeletePostBtn} onClick={handleModalShow}> 
                 <FiTrash2 className={styles.DeletePostBtnIcon}/>
-
             </div>
             <Modal show={showModal} onHide={handleModalClose}>
                 <Modal.Header closeButton onClick={handleModalClose}>

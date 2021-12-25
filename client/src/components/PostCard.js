@@ -7,17 +7,19 @@ import { AiOutlineComment } from 'react-icons/ai'
 import LikeButton from './LikeButton'
 import styles from './PostCard.module.css'
 import DeleteButton from './DeleteButton'
+import EditButton from './EditButton'
 
 const PostCard = ({ post: { body, createdAt, id, username, likeCount, commentCount, likes }}) => {
-    
     const { user } = useContext(AuthContext)
-
     return (
 
         <Card className={styles.PostCardWrapper} >
             <div className={styles.PostCardPadding} >
                 {user && user.username === username && (
-                    <DeleteButton postId={id}></DeleteButton>
+                    <>
+                        <DeleteButton postId={id}></DeleteButton>
+                        <EditButton postId={id} body={body} user={username}></EditButton>
+                    </>
                 ) }
                 <Card.Title>
                     <div  className={styles.PostCardTitle}>

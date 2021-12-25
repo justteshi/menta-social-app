@@ -1,0 +1,16 @@
+.EditPostButton {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+}
+.EditPostButton:hover {
+    cursor: pointer;
+}
+.DeletePostBtnIcon {
+    color:red;
+    position: relative;
+    top: -3px;
+}
+.DeletePostBtnIcon:hover {
+    color: darkred;
+}
