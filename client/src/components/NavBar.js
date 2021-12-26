@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { AuthContext } from '../context/auth'
+import { CgProfile} from 'react-icons/cg'
+import { IoMdLogOut } from 'react-icons/io'
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
@@ -22,8 +24,8 @@ const NavBar = () => {
                     <div className={styles.SiteLogo}></div>
                 </a>
                 <ul>
-                    <li><NavLink to="/profile" active={`${true}`} onClick={handleItemClicked}>{user.username}</NavLink></li>
-                    <li><NavLink to='' className={styles.Logout} onClick={logout}>Logout</NavLink></li>
+                    <li><NavLink to="/profile" active={`${true}`} onClick={handleItemClicked}><CgProfile style={{fontSize:"20px"}} /> {user.username}</NavLink></li>
+                    <li><NavLink to='' className={styles.Logout} onClick={logout}>Logout <IoMdLogOut /></NavLink></li>
                 </ul>
 
             </Container>

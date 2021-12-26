@@ -28,12 +28,17 @@
     border-bottom: none !important;
     background: lightblue;
     border-radius: 25px;
+    padding: 10px !important;
 }
-/* .SiteLogo {
+.Logout:hover {
+    box-shadow: 1px 1px 5px lightblue;
+}
+
+.SiteLogo {
     background: url(../menta_logo.png);
     background-size: cover;
     background-position: top;
     height: 50px;
     width: 100px;
     margin: auto;
-} */
+}
