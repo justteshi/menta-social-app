@@ -17,7 +17,8 @@ Social media where you can share information about everything. You can Register 
 ## Installation
 * requirements
   node v16
-### Back-end
+  Note: Port 3000 and 3001 should not be in use. To validate follow the instructions bellow.
+### Server
  1. Clone the repo
  ```bash
  git clone https://github.com/justteshi/menta-social-app.git
@@ -30,7 +31,7 @@ npm install
  ```bash
 node index
  ```
-### Front-end
+### Client
  4. Navigate to the client folder
  ```bash
  cd clinet
