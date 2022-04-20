@@ -16,8 +16,8 @@ Social media where you can share information about everything. You can Register 
 
 ## Installation
 * requirements
-  node v16
-  Note: Port 3000 and 3001 should not be in use. To validate follow the instructions bellow.
+* node v16
+* Note: Port 3000 and 3001 should not be in use. To validate follow the instructions bellow.
 ### Server
  1. Clone the repo
  ```bash
