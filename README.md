@@ -1,5 +1,5 @@
 # Menta Social Media Web App
-Social media where you can share information about everything. You can Register and Login, create posts, create comments and likes on them.
+Social media where you can share information about everything. You can Register and Login, create posts, create comments and like them.
 
 ## Stack
 * [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
